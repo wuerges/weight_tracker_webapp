@@ -11,6 +11,19 @@
   </thead>
 
   <tbody>
+
+    <%= form_with(model: Record.new, local: false) do |form| %>
+
+      <div class="field">
+        <%= form.button "-" %>
+        <%= form.text_field :weight %>
+        <%= form.button "+" %>
+        <%= form.submit "send" %>
+      </div>
+
+    <% end %>
+
+
     <% @records.each do |record| %>
 
       <tr>
