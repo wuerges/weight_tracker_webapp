@@ -2,9 +2,8 @@ class RecordsController < ApplicationController
   # GET /records
   def index
     @record = Record.new
-    last = Record.order("created_at").last
-    @record.weight =  last ? last.weight : 100
-    @records = Record.all
+    @records = Record.order("created_at desc")
+    @record.weight =  @records.first ? @records.first.weight : 100
   end
 
   # POST /records
