@@ -30,6 +30,7 @@ class RecordsController < ApplicationController
       if @record.save
         format.html { redirect_to @record, notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @record.errors, status: :unprocessable_entity }
@@ -41,13 +42,13 @@ class RecordsController < ApplicationController
   # PATCH/PUT /records/1.json
   def update
     respond_to do |format|
-      if @record.update(record_params)
-        format.html { redirect_to @record, notice: 'Record was successfully updated.' }
-        format.json { render :show, status: :ok, location: @record }
-      else
-        format.html { render :edit }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
-      end
+      format.js {
+        if @record = Record.find(params[:id])
+            dv = {'+' => 0.1, '-' => -0.1}[params[:button]]
+            @record.weight += dv
+            @record.save
+        end
+      }
     end
   end
 
@@ -56,8 +57,7 @@ class RecordsController < ApplicationController
   def destroy
     @record.destroy
     respond_to do |format|
-      format.html { redirect_to records_url, notice: 'Record was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 

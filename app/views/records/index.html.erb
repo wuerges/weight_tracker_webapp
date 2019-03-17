@@ -12,11 +12,16 @@
 
   <tbody>
     <% @records.each do |record| %>
+
       <tr>
-        <td><%= record.weight %></td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+      <%= form_for(record, :remote => true) do |form| %>
+        <%= form.button("+", {:value=>"-"}) %>
+        <%= form.text_field :weight %>
+        <%= form.button("+", {:value=>"+"}) %>
+        <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+      <% end %>
+    </td>
       </tr>
     <% end %>
   </tbody>
