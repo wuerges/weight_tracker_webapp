@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <%= form_for(record, :remote => true) do |form| %>
+      <%= form.text_field :weight %>
+      <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+    <% end %>
+  </td>
+</tr>

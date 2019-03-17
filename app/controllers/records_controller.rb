@@ -1,17 +1,16 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:update, :destroy]
-
   # GET /records
   def index
+    @record = Record.new
+    last = Record.order("created_at").last
+    @record.weight =  last ? last.weight : 100
     @records = Record.all
   end
 
   # POST /records
   def create
     @record = Record.new(record_params)
-    dv = {'+' => 0.1, '-' => -0.1}[params[:button]]
-    @record.weight += dv
-        
+
     respond_to do |format|
       if @record.save
         format.js
@@ -19,21 +18,9 @@ class RecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /records/1
-  def update
-    respond_to do |format|
-      format.js {
-        if @record = Record.find(params[:id])
-            dv = {'+' => 0.1, '-' => -0.1}[params[:button]]
-            @record.weight += dv
-            @record.save
-        end
-      }
-    end
-  end
-
   # DELETE /records/1
   def destroy
+    @record = Record.find(params[:id])
     @record.destroy
     respond_to do |format|
       format.js
@@ -41,11 +28,6 @@ class RecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_record
-      @record = Record.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
       params.require(:record).permit(:weight)

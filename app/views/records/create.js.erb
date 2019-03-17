@@ -1,4 +1,2 @@
-// comentário
-
-var text = $("#<%= dom_id(@record, :edit) %>").children("#record_weight")
-text.val("<%= @record.weight %>")
+$("#record_table_0").prepend(`<%= render 'item', record: @record %>`)
+console.log("OK")
