@@ -12,17 +12,14 @@
   <div class="row">
     <h1>Records</h1>
   </div>
+  <%= form_for(@record, :remote => true) do |form| %>
   <div class="row">
-    <%= form_for(@record, :remote => true) do |form| %>
-
-    <%= button_tag "-", onclick: "change(-0.1)", type: :button, :class=>"two columns" %>
+    <%= button_tag "-", onclick: "change(-0.1)", type: :button, :class =>"two columns" %>
     <%= form.text_field :weight, :class=>"four columns"  %>
-    <%= button_tag "+", onclick: "change(0.1)", type: :button, :class=>"two columns"  %>
-    <%= form.button "save", {:value=>"submit", :class=>"two columns" } %>
-
-    <% end %>
-
+    <%= button_tag "+", onclick: "change(0.1)", type: :button, :class =>"two columns"  %>
+    <%= form.button "save", {:value=>"submit", :class =>"two columns" } %>
   </div>
+  <% end %>
 </div>
 
 <table class="container ">
