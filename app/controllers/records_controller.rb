@@ -9,6 +9,9 @@ class RecordsController < ApplicationController
   # POST /records
   def create
     @record = Record.new(record_params)
+    dv = {'+' => 0.1, '-' => -0.1}[params[:button]]
+    @record.weight += dv
+        
     respond_to do |format|
       if @record.save
         format.js

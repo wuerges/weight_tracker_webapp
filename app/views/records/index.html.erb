@@ -12,16 +12,16 @@
 
   <tbody>
 
-    <%= form_with(model: Record.new, local: false) do |form| %>
+    <div class="field">
+    <%= form_for(Record.new, :remote => true) do |form| %>
 
-      <div class="field">
-        <%= form.button "-" %>
+        <%= form.button "-", {:value=>"-"} %>
         <%= form.text_field :weight %>
-        <%= form.button "+" %>
-        <%= form.submit "send" %>
-      </div>
+        <%= form.button "+", {:value=>"+"} %>
+        <%= form.button "add", {:value=>"submit"} %>
 
     <% end %>
+  </div>
 
 
     <% @records.each do |record| %>
@@ -29,7 +29,7 @@
       <tr>
         <td>
       <%= form_for(record, :remote => true) do |form| %>
-        <%= form.button("+", {:value=>"-"}) %>
+        <%= form.button("-", {:value=>"-"}) %>
         <%= form.text_field :weight %>
         <%= form.button("+", {:value=>"+"}) %>
         <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
