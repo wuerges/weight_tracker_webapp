@@ -1,10 +1,8 @@
 <tr>
-  <%= form_for(record, :remote => true) do |form| %>
   <td>
-    <%= form.text_field :weight, :readonly => :readonly %>
+    <%= record.weight %>
   </td>
   <td>
-    <%= form.text_field :created_at, :readonly => :readonly %>
+    <%= record.created_at %>
   </td>
-  <% end %>
 </tr>
