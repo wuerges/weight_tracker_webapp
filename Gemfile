@@ -71,4 +71,5 @@ gem "chartkick"
 gem 'groupdate'
 
 # postgress for heroku :/
+gem 'jquery-rails'
 gem 'pg'
