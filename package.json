@@ -1,8 +1,5 @@
 {
   "name": "WeightTracker",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.3.1",
-    "skeleton": "^0.1.2"
-  }
+  "dependencies": {}
 }
