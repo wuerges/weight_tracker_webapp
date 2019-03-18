@@ -39,7 +39,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.6'
+  # gem 'sqlite3', '~> 1.3.6'
 end
 
 group :development do
@@ -70,6 +70,5 @@ gem 'bootstrap'
 gem "chartkick"
 gem 'groupdate'
 
-group :production do
-  gem 'pg'
-end
+# postgress for heroku :/
+gem 'pg'
