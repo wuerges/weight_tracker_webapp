@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'charts', action: :index, controller: 'charts'
+
   resources :records
 
   root "records#index"

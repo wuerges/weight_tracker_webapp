@@ -1,8 +1,6 @@
 module ApplicationHelper
-  def records_active
-    ""
-  end
-  def chart_active
-    ""
+  def active(contr)
+    # params[:controller] == contr ? "active" : contr
+    params[:controller] == contr ? "active" :""
   end
 end
