@@ -9,20 +9,22 @@
   }
 </script>
 <div class="container">
-  <div class="row">
-    <h1>Records</h1>
-  </div>
+  <h1>Records</h1>
   <%= form_for(@record, :remote => true) do |form| %>
-  <div class="row">
-    <%= button_tag "-", onclick: "change(-0.1)", type: :button, :class =>"two columns" %>
-    <%= form.text_field :weight, :class=>"four columns"  %>
-    <%= button_tag "+", onclick: "change(0.1)", type: :button, :class =>"two columns"  %>
-    <%= form.button "save", {:value=>"submit", :class =>"two columns" } %>
+  <div class="btn-toolbar" role="toolbar" >
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= button_tag "-", onclick: "change(-0.1)", type: :button, :class =>"btn btn-primary" %>
+      <%= form.text_field :weight, :class=>""  %>
+      <%= button_tag "+", onclick: "change(0.1)", type: :button, :class =>"btn btn-primary"  %>
+    </div>
+    <div class="btn-group">
+      <%= form.button "save", {:value=>"submit", :class =>"btn btn-primary" } %>
+    </div>
   </div>
   <% end %>
 </div>
 
-<table class="container ">
+<table class="table container">
   <thead>
     <tr>
       <th>Weight</th>
