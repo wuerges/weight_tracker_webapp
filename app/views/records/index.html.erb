@@ -14,10 +14,10 @@
   <div class="btn-toolbar" role="toolbar" >
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= button_tag "-", onclick: "change(-0.1)", type: :button, :class =>"btn btn-primary" %>
-      <%= form.text_field :weight, :class=>""  %>
+      <%= form.text_field :weight, :maxlength => "6" , :class=>""  %>
       <%= button_tag "+", onclick: "change(0.1)", type: :button, :class =>"btn btn-primary"  %>
     </div>
-    <div class="btn-group">
+    <div class="btn-group  pl-1">
       <%= form.button "save", {:value=>"submit", :class =>"btn btn-primary" } %>
     </div>
   </div>
